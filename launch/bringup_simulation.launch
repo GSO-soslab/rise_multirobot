@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find alpha_rise_bringup)/launch/bringup_simulation.launch"/>
+    <include file="$(find wamv_bringup)/launch/bringup_multirobot.launch"/>
+</launch>

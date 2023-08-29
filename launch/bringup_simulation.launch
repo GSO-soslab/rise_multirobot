@@ -1,4 +1,14 @@
 <launch>
     <include file="$(find alpha_rise_bringup)/launch/bringup_simulation.launch"/>
+    <node type="joy_node" name="joy_node_alpha" pkg="joy">
+        <param name="dev" value= "/dev/input/js1"/>
+    </node>
+
+    <include file="$(find alpha_rise_bringup)/launch/include/joystick.launch.xml">
+        <arg name="robot_name" value="$(arg robot_name)"/>
+    </include>
+
+    <include file="$(find msis_pcl)/launch/start_cpp.launch"/>
+
     <include file="$(find wamv_bringup)/launch/bringup_multirobot.launch"/>
 </launch>

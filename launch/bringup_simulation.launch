@@ -5,7 +5,7 @@
     </node>
 
     <include file="$(find alpha_rise_bringup)/launch/include/joystick.launch.xml">
-        <arg name="robot_name" value="$(arg robot_name)"/>
+        <arg name="robot_name" value="alpha_rise"/>
     </include>
 
     <include file="$(find msis_pcl)/launch/start_cpp.launch"/>

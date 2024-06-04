@@ -2,7 +2,7 @@
 ROS metapackage for wamv and alpha in the stonefish environment
 
 
-`roslaunch rise_multirobot bringup_simulation` to launch the world
+`roslaunch rise_multirobot bringup_simulation.launch` to launch the world
 
 ### Dependencies
 

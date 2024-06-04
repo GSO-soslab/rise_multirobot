@@ -8,10 +8,7 @@
     <!--PCL Processing node-->
     <include file="$(find pcl_proc)/launch/filter.launch"/>
 
-    <!--Costmap Node-->
-    <include file="$(find pcl_proc)/launch/costmap.launch"/>
-
-    <!--Path Generator Node-->
-    <include file="$(find pcl_proc)/launch/path_gen.launch"/>
+    <!--Costmap and Path Node-->
+    <include file="$(find pcl_proc)/launch/bringup_path.launch"/>
 
 </launch>

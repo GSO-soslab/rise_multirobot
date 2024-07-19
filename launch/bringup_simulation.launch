@@ -3,12 +3,12 @@
 
     <include file="$(find msis_pcl)/launch/start_cpp.launch"/>
 
-    <include file="$(find wamv_bringup)/launch/bringup_multirobot.launch"/>
+    <!-- <include file="$(find wamv_bringup)/launch/bringup_multirobot.launch"/> -->
 
     <!--PCL Processing node-->
     <include file="$(find pcl_proc)/launch/filter.launch"/>
 
-    <!--Costmap Node-->
-    <include file="$(find pcl_proc)/launch/costmap.launch"/>
+    <!--Costmap and Path Node-->
+    <include file="$(find pcl_proc)/launch/bringup_path.launch"/>
 
 </launch>

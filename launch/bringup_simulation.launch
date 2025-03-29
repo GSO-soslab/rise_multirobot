@@ -6,9 +6,24 @@
     <!-- <include file="$(find wamv_bringup)/launch/bringup_multirobot.launch"/> -->
 
     <!--PCL Processing node-->
-    <include file="$(find pcl_proc)/launch/filter.launch"/>
+    <node ns="alpha_rise" pkg="pcl_proc" type="processing.py" 
+        name ="msis_pcl_filter_node" output="screen">
+        <rosparam command="load" file="$(find alpha_rise_config)/config/msis_filter_sim.yaml"/>
+    </node>
 
-    <!--Costmap and Path Node-->
-    <include file="$(find pcl_proc)/launch/bringup_path.launch"/>
+    <!--Costmap-->
+    <node ns="alpha_rise" pkg="move_base" type="move_base" name="move_base" output="screen">
+        <param name="use_sim_true" value="true"/>
+        <!-- <param name="base_global_planner" value="navfn/NavfnROS"/>
+        <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/> -->
+        <rosparam file="$(find alpha_rise_config)/config/local_costmap_params.yaml" command="load"/>
+        <rosparam file="$(find alpha_rise_config)/config/global_costmap_params.yaml" command="load"/>
+        <rosparam file="$(find alpha_rise_config)/config/common_costmap_params_sim.yaml" command="load" ns="global_costmap"/>
+        <rosparam file="$(find alpha_rise_config)/config/common_costmap_params_sim.yaml" command="load" ns="local_costmap"/>
+    </node>
 
+    <!-- Bring up the Path Generation Node -->
+    <include file="$(find alpha_rise_bringup)/launch/include/path_gen.launch.xml">
+        <arg name="robot_name" value="alpha_rise"/>
+    </include>
 </launch>

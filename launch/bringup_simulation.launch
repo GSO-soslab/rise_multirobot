@@ -11,20 +11,10 @@
         <rosparam command="load" file="$(find alpha_rise_config)/config/msis_filter_sim.yaml"/>
     </node>
 
-    <!--Costmap-->
-    <node ns="alpha_rise" pkg="move_base" type="move_base" name="move_base" output="screen">
-        <param name="use_sim_true" value="true"/>
-        <!-- <param name="base_global_planner" value="navfn/NavfnROS"/>
-        <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/> -->
-        <rosparam file="$(find alpha_rise_config)/config/local_costmap_params.yaml" command="load"/>
-        <rosparam file="$(find alpha_rise_config)/config/global_costmap_params.yaml" command="load"/>
-        <rosparam file="$(find alpha_rise_config)/config/common_costmap_params_sim.yaml" command="load" ns="global_costmap"/>
-        <rosparam file="$(find alpha_rise_config)/config/common_costmap_params_sim.yaml" command="load" ns="local_costmap"/>
-    </node>
-
     <!-- Bring up the Path Generation Node -->
-    <include file="$(find alpha_rise_bringup)/launch/include/path_gen.launch.xml">
+    <include file="$(find alpha_rise_bringup)/launch/bringup_path.launch">
         <arg name="robot_name" value="alpha_rise"/>
+        <arg name="is_sim" default="true"/>
     </include>
 
     <!-- FLS_PCL-->

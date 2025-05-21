@@ -26,14 +26,23 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(msis_pcl_launch_file)
     )
 
+    #PCL_FILTER 
     pcl_filter_launch_file = os.path.join(get_package_share_directory('pcl_proc'), 
                                                   'launch', 'filter.launch.py')
     pcl_filter_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(pcl_filter_launch_file)
     )
 
+    #FLS_PCL
+    fls_pcl_launch_file = os.path.join(get_package_share_directory('fls_pcl'), 
+                                                  'launch', 'fls_pcl.launch.py')
+    fls_pcl_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(fls_pcl_launch_file)
+    )
+
     return LaunchDescription([
         alpha_rise_bringup,
         msis_pcl_launch,
-        pcl_filter_launch
+        pcl_filter_launch,
+        fls_pcl_launch
     ])

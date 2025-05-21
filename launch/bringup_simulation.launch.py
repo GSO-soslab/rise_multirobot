@@ -40,9 +40,24 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(fls_pcl_launch_file)
     )
 
+    #Costmap
+    costmap_launch_file = os.path.join(get_package_share_directory('pcl_proc'), 
+                                                  'launch', 'costmap.launch.py')
+    costmap_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(costmap_launch_file)
+    )
+
+    path_gen_launch_file = os.path.join(get_package_share_directory('pcl_proc'), 
+                                                  'launch', 'path_gen.launch.py')
+    path_gen_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(path_gen_launch_file)
+    )
+
     return LaunchDescription([
         alpha_rise_bringup,
         msis_pcl_launch,
         pcl_filter_launch,
-        fls_pcl_launch
+        fls_pcl_launch,
+        costmap_launch,
+        path_gen_launch
     ])

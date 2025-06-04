@@ -6,7 +6,7 @@ import launch.actions
 from ament_index_python.packages import get_package_share_directory
 from launch_ros.actions import Node
 from launch.substitutions import EnvironmentVariable
-from launch.actions import IncludeLaunchDescription
+from launch.actions import IncludeLaunchDescription, SetEnvironmentVariable
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.actions import DeclareLaunchArgument
 
@@ -47,6 +47,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(costmap_launch_file)
     )
 
+    #Path Gen
     path_gen_launch_file = os.path.join(get_package_share_directory('pcl_proc'), 
                                                   'launch', 'path_gen.launch.py')
     path_gen_launch = IncludeLaunchDescription(
@@ -54,6 +55,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
+        SetEnvironmentVariable('RCUTILS_COLORIZED_OUTPUT', '1'),
         alpha_rise_bringup,
         msis_pcl_launch,
         pcl_filter_launch,

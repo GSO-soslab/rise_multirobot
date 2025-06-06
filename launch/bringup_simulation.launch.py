@@ -20,7 +20,7 @@ def generate_launch_description():
     )
 
     #MSIS_PCL
-    msis_pcl_launch_file = os.path.join(get_package_share_directory('msis_pcl'), 
+    msis_pcl_launch_file = os.path.join(get_package_share_directory('pcl_proc'), 
                                                   'launch', 'msis_pcl.launch.py')
     msis_pcl_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(msis_pcl_launch_file)

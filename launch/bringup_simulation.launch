@@ -1,14 +1,29 @@
+<?xml version="1.0"?>
+
 <launch>
+
+    <arg name="parent_name" default="wamv"/>
+    <arg name="child_name" default="alpha_rise"/>
+
     <include file="$(find alpha_rise_bringup)/launch/bringup_simulation.launch"/>
 
-    <include file="$(find msis_pcl)/launch/start_cpp.launch"/>
+    <!-- <include file="$(find msis_pcl)/launch/start_cpp.launch"/> -->
+
+    <!-- <include file="$(find wamv_path_planner)/launch/costmap.launch"/> -->
+
+    <!-- <include file="$(find laserscan_to_pointcloud)/launch/laserscan_to_pointcloud_assembler.launch"/> -->
 
     <include file="$(find wamv_bringup)/launch/bringup_multirobot.launch"/>
 
+    <include file="$(find mvp_localization_utilities)/launch/world_to_world_transform.launch">
+        <arg name="parent_name" value="$(arg parent_name)"/>
+        <arg name="child_name" value="$(arg child_name)"/>
+    </include>
+
     <!--PCL Processing node-->
-    <include file="$(find pcl_proc)/launch/filter.launch"/>
+    <!-- <include file="$(find pcl_proc)/launch/filter.launch"/> -->
 
     <!--Costmap Node-->
-    <include file="$(find pcl_proc)/launch/costmap.launch"/>
+    <!-- <include file="$(find pcl_proc)/launch/costmap.launch"/> -->
 
 </launch>

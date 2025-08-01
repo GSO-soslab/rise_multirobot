@@ -5,6 +5,8 @@ sudo apt-get install ros-jazzy-geographic-msgs ros-jazzy-robot-localization ros-
 sudo apt-get install libglm-dev libsdl-dev libfreetype6-dev libgsl-dev
 
 ## Nvidia for stonefish
-sudo prime-select nvidia
+sudo prime-select nvidia & then reboot
+
+## Extra Nvidia
 sudo nvidia-smi -pm 1/0 to turn on/off persistance mode.
 

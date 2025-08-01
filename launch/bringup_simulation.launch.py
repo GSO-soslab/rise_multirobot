@@ -53,6 +53,14 @@ def generate_launch_description():
     path_gen_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(path_gen_launch_file)
     )
+    
+    #Waypoint Administrator
+    wp_admin_launch_file = os.path.join(get_package_share_directory('pcl_proc'),
+                                        'launch', 'wp_admin.launch.py')
+    
+    wp_admin_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(wp_admin_launch_file)
+    )
 
     return LaunchDescription([
         SetEnvironmentVariable('RCUTILS_COLORIZED_OUTPUT', '1'),
@@ -61,5 +69,6 @@ def generate_launch_description():
         pcl_filter_launch,
         fls_pcl_launch,
         costmap_launch,
-        path_gen_launch
+        path_gen_launch,
+        wp_admin_launch
     ])

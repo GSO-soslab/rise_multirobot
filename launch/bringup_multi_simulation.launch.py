@@ -42,7 +42,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource([os.path.join(get_package_share_directory("alpha_rise_bringup"), 'launch','include','simulation_drivers.launch.py')]),
     )
 
-    alpha_localization = IncludeLaunchDescription(
+    alpha_localization_sim = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(get_package_share_directory("alpha_rise_bringup"), 'launch','include', 'localization_sim.launch.py')]),
     )
 
@@ -51,7 +51,7 @@ def generate_launch_description():
     )
 
 
-    alpha_mvp_control = IncludeLaunchDescription(
+    alpha_mvp_control_sim = IncludeLaunchDescription(
             PythonLaunchDescriptionSource([os.path.join(get_package_share_directory('alpha_rise_bringup'), 'launch','include','mvp_control_sim.launch.py')]),
             launch_arguments = {'arg_robot_name': 'alpha_rise'}.items()  
     )
@@ -68,8 +68,8 @@ def generate_launch_description():
         wamv_localization,
         wamv_mvp,
         alpha_sim_drivers,
-        alpha_localization,
+        alpha_localization_sim,
         alpha_description,
-        alpha_mvp_control,
+        alpha_mvp_control_sim,
         alpha_mvp_mission
     ])

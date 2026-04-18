@@ -26,6 +26,12 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(msis_pcl_launch_file)
     )
 
+    msis_prob_launch_file = os.path.join(get_package_share_directory('pcl_proc'), 
+                                                  'launch', 'msis_voxels.launch.py')
+    msis_prob_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(msis_prob_launch_file)
+    )
+
     #PCL_FILTER 
     pcl_filter_launch_file = os.path.join(get_package_share_directory('pcl_proc'), 
                                                   'launch', 'filter.launch.py')
@@ -34,12 +40,43 @@ def generate_launch_description():
     )
 
     #FLS_PCL
-    fls_pcl_launch_file = os.path.join(get_package_share_directory('fls_pcl'), 
-                                                  'launch', 'fls_pcl.launch.py')
-    fls_pcl_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(fls_pcl_launch_file)
+    fls_voxel_prob = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                get_package_share_directory('fls_pcl'),
+                'launch',
+                'fls_pcl.launch.py'
+            )
+        ),
+        launch_arguments={
+            'use_sim_time': 'true'
+        }.items()
     )
 
+    mbes_inv = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                get_package_share_directory('mbes_ism'),
+                'launch',
+                'mbes_ism.launch.py'
+            )
+        ),
+        launch_arguments={'use_sim_time': 'true'}.items()
+    )
+
+    #Voxels
+    voxel_log_odds = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                get_package_share_directory('fls_pcl'),
+                'launch',
+                'voxel_log_odds.launch.py'
+            )
+        ),
+        launch_arguments={
+            'use_sim_time': 'true'
+        }.items()
+    )
     #Costmap
     costmap_launch_file = os.path.join(get_package_share_directory('pcl_proc'), 
                                                   'launch', 'costmap.launch.py')
@@ -66,8 +103,11 @@ def generate_launch_description():
         SetEnvironmentVariable('RCUTILS_COLORIZED_OUTPUT', '1'),
         alpha_rise_bringup,
         msis_pcl_launch,
+        msis_prob_launch,
         pcl_filter_launch,
-        fls_pcl_launch,
+        fls_voxel_prob,
+        mbes_inv,
+        # voxel_log_odds,
         costmap_launch,
         path_gen_launch,
         wp_admin_launch

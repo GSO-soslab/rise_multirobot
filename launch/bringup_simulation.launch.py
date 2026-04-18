@@ -20,20 +20,20 @@ def generate_launch_description():
     )
 
     #MSIS_PCL
-    msis_pcl_launch_file = os.path.join(get_package_share_directory('pcl_proc'), 
+    msis_pcl_launch_file = os.path.join(get_package_share_directory('iceberg_nav'), 
                                                   'launch', 'msis_pcl.launch.py')
     msis_pcl_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(msis_pcl_launch_file)
     )
 
-    msis_prob_launch_file = os.path.join(get_package_share_directory('pcl_proc'), 
+    msis_prob_launch_file = os.path.join(get_package_share_directory('iceberg_nav'), 
                                                   'launch', 'msis_voxels.launch.py')
     msis_prob_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(msis_prob_launch_file)
     )
 
     #PCL_FILTER 
-    pcl_filter_launch_file = os.path.join(get_package_share_directory('pcl_proc'), 
+    pcl_filter_launch_file = os.path.join(get_package_share_directory('iceberg_nav'), 
                                                   'launch', 'filter.launch.py')
     pcl_filter_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(pcl_filter_launch_file)
@@ -43,9 +43,9 @@ def generate_launch_description():
     fls_voxel_prob = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(
-                get_package_share_directory('fls_pcl'),
+                get_package_share_directory('fls_ism'),
                 'launch',
-                'fls_pcl.launch.py'
+                'fls_ism.launch.py'
             )
         ),
         launch_arguments={
@@ -68,7 +68,7 @@ def generate_launch_description():
     voxel_log_odds = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(
-                get_package_share_directory('fls_pcl'),
+                get_package_share_directory('iceberg_nav'),
                 'launch',
                 'voxel_log_odds.launch.py'
             )
@@ -78,21 +78,21 @@ def generate_launch_description():
         }.items()
     )
     #Costmap
-    costmap_launch_file = os.path.join(get_package_share_directory('pcl_proc'), 
+    costmap_launch_file = os.path.join(get_package_share_directory('iceberg_nav'), 
                                                   'launch', 'costmap.launch.py')
     costmap_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(costmap_launch_file)
     )
 
     #Path Gen
-    path_gen_launch_file = os.path.join(get_package_share_directory('pcl_proc'), 
+    path_gen_launch_file = os.path.join(get_package_share_directory('iceberg_nav'), 
                                                   'launch', 'path_gen.launch.py')
     path_gen_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(path_gen_launch_file)
     )
     
     #Waypoint Administrator
-    wp_admin_launch_file = os.path.join(get_package_share_directory('pcl_proc'),
+    wp_admin_launch_file = os.path.join(get_package_share_directory('iceberg_nav'),
                                         'launch', 'wp_admin.launch.py')
     
     wp_admin_launch = IncludeLaunchDescription(

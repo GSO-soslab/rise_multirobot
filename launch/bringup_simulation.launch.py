@@ -103,12 +103,12 @@ def generate_launch_description():
         SetEnvironmentVariable('RCUTILS_COLORIZED_OUTPUT', '1'),
         alpha_rise_bringup,
         msis_pcl_launch,
+        # pcl_filter_launch,
         msis_prob_launch,
-        pcl_filter_launch,
         fls_voxel_prob,
         mbes_inv,
-        # voxel_log_odds,
-        costmap_launch,
+        voxel_log_odds,
+        # costmap_launch,
         path_gen_launch,
         wp_admin_launch
     ])
